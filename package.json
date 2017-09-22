@@ -35,6 +35,6 @@
     }
   },
   "scripts": {
-    "prepublish": "cp node_modules/lunr/lunr.min.js ./assets/lunr.min.js"
+    "prepublish": "cd node_modules/lunr && npm install && make lunr.min.js && cd ../../ && cp node_modules/lunr/lunr.min.js ./assets/lunr.min.js"
   }
 }
