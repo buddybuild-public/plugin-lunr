@@ -30,7 +30,6 @@ require([
         var that = this;
         var results = [];
 
-        console.log("Starting search with query:", q, "offset:", offset, "length: ", length);
         if (this.index) {
             // results = $.map(this.index.search(q), function(result) {
             results = $.map(this.index.query(function (qq) {
@@ -45,7 +44,6 @@ require([
               })
             }), function(result) {
                 var doc = that.store[result.ref];
-                console.log("got a doc");
 
                 return {
                     title: doc.title,
