@@ -32,7 +32,18 @@ require([
 
         console.log("Starting search with query:", q, "offset:", offset, "length: ", length);
         if (this.index) {
-            results = $.map(this.index.search(q), function(result) {
+            // results = $.map(this.index.search(q), function(result) {
+            results = $.map(this.index.query(function (qq) {
+              qq.term(q, { boost: 100 })
+              qq.term(q, { boost: 10,
+                           usePipeline, true,
+                           wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING
+              })
+              qq.term(q, { boost: 1,
+                           usePipeline: false,
+                           editDistance: 1
+              })
+            }), function(result) {
                 var doc = that.store[result.ref];
                 console.log("got a doc");
 
