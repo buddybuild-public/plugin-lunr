@@ -19,6 +19,15 @@ function buildIndex(context, docs) {
       this.pipeline.remove(lunr.trimmer);
     }
 
+    // disable the stemmer, since it produces odd results for
+    // "deployments"
+    this.pipeline.remove(lunr.stemmer);
+
+    // disable the stop-word filter, since "and" and "or" are common
+    // terms in programming examples.
+    // FIXME: make this configurable
+    this.pipeline.remove(lunr.stopWordFilter);
+
     // add all documents
     for (var key in docs) {
       if (docs.hasOwnProperty(key)) {
