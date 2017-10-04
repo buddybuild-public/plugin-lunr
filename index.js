@@ -31,7 +31,6 @@ function buildIndex(context, docs) {
     // add all documents
     for (var key in docs) {
       if (docs.hasOwnProperty(key)) {
-        this.log.debug.ln('index page', page.path);
         this.add(docs[key]);
       }
     }
