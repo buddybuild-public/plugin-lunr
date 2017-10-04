@@ -31,6 +31,7 @@ function buildIndex(context, docs) {
     // add all documents
     for (var key in docs) {
       if (docs.hasOwnProperty(key)) {
+        this.log.debug.ln('index page', page.path);
         this.add(docs[key]);
       }
     }
@@ -58,8 +59,6 @@ module.exports = {
 
       var text, maxIndexSize;
       maxIndexSize = this.config.get('pluginsConfig.lunr.maxIndexSize') || this.config.get('lunr.maxIndexSize');
-
-      this.log.debug.ln('index page', page.path);
 
       text = page.content;
       // Decode HTML
