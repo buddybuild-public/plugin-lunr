@@ -64,6 +64,7 @@ require([
     };
 
     // Set gitbook research
+    console.log("binding to start...");
     gitbook.events.bind('start', function(e, config) {
         console.log("Acquiring search engine...");
         var engine = gitbook.search.getEngine();
