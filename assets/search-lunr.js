@@ -34,6 +34,7 @@ require([
             // results = $.map(this.index.search(q), function(result) {
             results = $.map(this.index.query(function (qq) {
               qq.term(q, { boost: 100 })
+              qq.term(q.toLowerCase(), { boost: 50 })
               qq.term(q, { boost: 10,
                            usePipeline: false,
                            wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING
