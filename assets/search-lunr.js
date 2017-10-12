@@ -14,11 +14,13 @@ require([
         var that = this;
         var d = $.Deferred();
 
+        console.log("Loading search index...");
         $.getJSON(gitbook.state.basePath+'/search_index.json')
         .then(function(data) {
             // eslint-disable-next-line no-undef
             that.index = lunr.Index.load(data.index);
             that.store = data.store;
+            console.log("Loaded search!");
             d.resolve();
         });
 
