@@ -20,7 +20,7 @@ require([
             // eslint-disable-next-line no-undef
             that.index = lunr.Index.load(data.index);
             that.store = data.store;
-            console.log("Loaded search!");
+            console.log("Loaded index!");
             d.resolve();
         });
 
@@ -65,6 +65,7 @@ require([
 
     // Set gitbook research
     gitbook.events.bind('start', function(e, config) {
+        console.log("Acquiring search engine...");
         var engine = gitbook.search.getEngine();
         if (!engine) {
             gitbook.search.setEngine(LunrSearchEngine, config);
