@@ -1,5 +1,18 @@
 # lunr
 
+This is a customized version of the GitBook default search plugin. The
+changes include:
+
+* Update to use latest `lunr.js`, which uses immutable indexes.
+* Enable automatic wildcard searches, and edit distance=1.
+* Disabled pipeline for wilcard matches.
+* Disabled stemmer and stopWordFilter during indexing.
+* Less debug output during page processing, since the index is created
+  after all pages are evaluated.
+* Query for lowercase versions of the query.
+
+Original description follows:
+
 This plugin provides a backend for the [search](https://github.com/GitbookIO/plugin-search) plugin.
 
 This plugin is a default plugin.
