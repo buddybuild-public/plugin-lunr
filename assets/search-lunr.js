@@ -73,3 +73,4 @@ require([
         }
     });
 });
+window.BBSearch = true;
