@@ -14,13 +14,11 @@ require([
         var that = this;
         var d = $.Deferred();
 
-        console.log("Loading search index...");
         $.getJSON(gitbook.state.basePath+'/search_index.json')
         .then(function(data) {
             // eslint-disable-next-line no-undef
             that.index = lunr.Index.load(data.index);
             that.store = data.store;
-            console.log("Loaded index!");
             d.resolve();
         });
 
@@ -64,13 +62,10 @@ require([
     };
 
     // Set gitbook research
-    console.log("binding to start...");
     gitbook.events.on('start', function(e, config) {
-        console.log("Acquiring search engine...");
         var engine = gitbook.search.getEngine();
         if (!engine) {
             gitbook.search.setEngine(LunrSearchEngine, config);
         }
     });
 });
-window.BBSearch = true;
