@@ -69,5 +69,3 @@ require([
         }
     });
 });
-
-window.BBLoaded["lunr"] = true;
