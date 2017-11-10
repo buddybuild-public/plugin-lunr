@@ -35,10 +35,6 @@ require([
             results = $.map(this.index.query(function (qq) {
               qq.term(q, { boost: 100 })
               qq.term(q.toLowerCase(), { boost: 50 })
-              qq.term(q, { boost: 10,
-                           usePipeline: false,
-                           wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING
-              })
               qq.term(q, { boost: 1,
                            usePipeline: false,
                            editDistance: 1
